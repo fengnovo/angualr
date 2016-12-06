@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="APP">
+<head>
+	<meta charset="utf-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>angular-test</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/tpl/home.css">
+<link rel="stylesheet" type="text/css" href="css/tpl/detail.css">
+<script src="libs/jquery-2.0.2.min.js"></script>
+<script src="libs/angular.min.js"></script>
+<script src="libs/angular-animate.min.js"></script>
+<script src="libs/angular-ui-router.min.js"></script>
+<body>
+
+<div ng-controller="MainCtrl" class="reset-div">
+	<div ng-show="isLoading" class="load"></div>
+    <div class="nav"> 
+        
+        <p ng-show="homePage">
+            <div class="back" ui-sref="home" ng-hide="homePage" onclick="javascript:history.go(-1);">返回</div><div class="page-name">{{pageName}}</div></p>
+    </div>
+    <div ui-view class="m-t" ng-class="{true:'slide-left',false:'slide-right'}[leftorright]">
+        
+    </div>
+<div>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
