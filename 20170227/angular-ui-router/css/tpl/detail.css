@@ -1,0 +1,29 @@
+
+.back {
+	display: -webkit-inline-box;
+	margin-left: 1rem; 
+	font-size: 1rem;
+	line-height: 3rem;
+	color: #fff;
+}
+
+.detail-title {
+	margin-top: 4rem; 
+    font-weight: bold;
+}
+.detail-time {
+    font-size: .8rem; 
+    color: gray;
+    margin-left: 1rem; 
+}
+.news-detail {
+	margin-top: 1rem;
+	margin-bottom: 2rem;  
+	font-size: 1rem;    
+}
+.news-detail img {
+    width: 100%;  
+}
+.news-detail p {
+    margin: 1rem;  
+}

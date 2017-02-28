@@ -1,0 +1,14 @@
+<div class="reset-div" id="scroll-area">
+    <ul class="list-ul" id="scroll-div">
+    	<li class="list-li" ng-repeat="value in dataset" id={{value.link}}>
+			<a href="#detail/{{value.link}}" ui-sref="detail({uid:'{{value.link}}'})" target="_self">
+				<span class="title">{{value.title}}</span>
+				<span class="time">{{value.source}}&nbsp;&nbsp;{{value.pubDate}}</span>
+				<span class="content">{{value.desc}}</span>
+			</a>
+		</li>
+    </ul>
+    <div ng-show="load2" class="load2"></div>
+</div>
+
+</div>
