@@ -1,0 +1,1 @@
+ng 2项目使用typescript
