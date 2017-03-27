@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐api</title>
+    <link rel="stylesheet" href="./bootstrap/bootstrap.min.css">
+    <script scr="./bootstrap/bootstrap.min.js"></script>
+    <script src="./jquery-2.0.2.min.js"></script>
+    <script src="./handlebars/handlebars.min.js"></script>
+</head>
+<body>
+    <div>
+        <button onclick="javascript:window.clic();">下载</button>
+    </div>
+    <script>
+        function clic(){
+            var iosUrl = 'http://sj.qq.com/myapp/detail.htm?apkName=com.gf.client';
+            // location.href = 'http://mp.weixin.qq.com/mp/redirect?'+encodeURIComponent(iosUrl);
+            location.href = iosUrl;
+        }
+        
+    </script>
+    
+</body>
+</html>

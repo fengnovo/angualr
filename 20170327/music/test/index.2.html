@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐api</title>
+    <script src="./jquery-2.0.2.min.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script scr="./bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="./handlebars/handlebars.min.js"></script>
+</head>
+<body>
+      <div id="music_list">
+            
+      </div>
+    <script>
+        var context = [];
+        $.ajax({
+            headers: {
+                Authorization:'APPCODE 3fd6ffe7472841cd984074d5d05bc814'
+            },
+            url: 'http://ali-qqmusic.showapi.com/top?topid=5',
+            success: function(data) {
+                console.log(data.showapi_res_body.pagebean.songlist);
+                var musicList = data.showapi_res_body.pagebean.songlist;
+                musicList.forEach(function(music) {
+                    var musicTitle = music.songname;
+                    var musicDescription = music.seconds/60+'分钟,'+music.songname;
+                    var ownerUsername = music.singername;
+                    var musicImage = music.albumpic_small;
+                    context.push('<p><a href='+location.origin
+                    +'/detail.html?id='+music.songid+'&musicTitle='+musicTitle+'&ownerUsername='
+                    +ownerUsername+'&musicDescription='+musicDescription+'&albumpicBig='+albumpic_big+'>'
+                    +'<img src="'+musicImage+'" /><div>标题：'+musicTitle+'<br />歌手：'+ownerUsername+'<br />描述：'+musicDescription+'</div></a></p>');
+                });
+                $('#music_list').html(context.join(''));
+            },
+            error: function(data) {
+                console.log(data);
+            }   
+        })
+    </script>
+
+    
+</body>
+</html>

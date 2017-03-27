@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐api</title>
+    <script src="./jquery-2.0.2.min.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script scr="./bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="./handlebars/handlebars.min.js"></script>
+</head>
+<body>
+      <div id="music">
+           <audio id="musicPlay" controls="controls">
+            浏览器不支持
+            </audio>
+      </div>
+    <script>
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            // console.log(window.location.search);
+            if(r!=null)return  unescape(r[2]); return null;
+        }
+        var song_id = GetQueryString("id");
+        // var musicTitle = GetQueryString("musicTitle");
+        // var ownerUsername = GetQueryString("ownerUsername");
+        // var musicDescription = GetQueryString("musicDescription");
+        // var albumpicBig = GetQueryString("albumpicBig");
+        
+        $('#musicPlay').attr('src','http://ws.stream.qqmusic.qq.com/'+song_id+'.m4a?fromtag=46');//musicDetail.show_link);
+        // var _html= '<div><p>'+musicTitle+'</p><p>'+ownerUsername+'</p>'+
+        // '<div><img src='+albumpicBig+' /></div></div>';
+        // $('#music').append(_html);
+    </script>
+
+    
+</body>
+</html>

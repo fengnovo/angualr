@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐api</title>
+    <script src="./jquery-2.0.2.min.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script scr="./bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="./handlebars/handlebars.min.js"></script>
+</head>
+<body>
+      <div id="music_list">
+            
+      </div>
+    <script>
+        var context = [];
+        $.ajax({
+            type:"get",
+            dataType:"jsonp",
+            url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?g_tk=2035891180&uin=318328341&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&tpl=3&page=detail&type=top&topid=26&_=1490626725778&jsonpCallback=novocallback',
+            // url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?g_tk=2035891180&uin=318328341&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&tpl=3&page=detail&type=top&topid=4&_=1490625298010&jsonpCallback=novocallback',
+            success: function(data) {
+                // console.log(data);
+                
+            },
+            error: function(data) {
+                // console.log(data);
+            }   
+        })
+
+        function novocallback(data){
+            console.log(data);
+            var musicList = data.songlist;
+            musicList.forEach(function(mu) {
+                var music = mu.data;
+                var musicTitle = music.songname;
+                var musicDescription = music.albumdesc+','+music.albumname;
+                context.push('<p><a href='+location.origin
+                +'/detail.html?id='+music.songid+'>'+musicDescription+'</a></p>');
+                $('#music_list').html(context.join(''));
+            });
+        }
+    </script>
+
+    
+</body>
+</html>
