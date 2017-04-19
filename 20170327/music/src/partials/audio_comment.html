@@ -1,0 +1,161 @@
+    <nav id="comment-navs" class="navs">
+        <!-- <i class="back" onclick="window.back()"></i> -->
+        <span><a href="javascript:void(0)" ng-click="navSwitch('comment')" ng-class="{'active': !!comment}">精选评论</a></span>
+        <span><a href="javascript:void(0)" ng-click="navSwitch('detail')" ng-class="{'active': !!detail}">内容详情</a></span>
+        <span><a href="javascript:void(0)" ng-click="navSwitch('provider')" ng-class="{'active': !!provider}">主讲人</a></span>
+    </nav>
+    <section class="network-column-wrap" ng-show="isBadNetworkDetail">
+        <div class="network-column-icon"></div>
+        <p class="network-column-text">网络不给力,{{badNetTabTip}}出不来啦~</p>
+        <a href="javascript:void(0)" ng-click="navSwitch(switchTab);" class="reloadBtn">点击重试</a>
+    </section>
+    <section ng-show="!!comment && !isBadNetworkDetail" class="comment-panel" id="comment-ctnPar">
+        <article id="comment-ctn" class="overflow-scroll">
+            <div class="user-info" id="comment-list">
+                <ul>
+                    <li ng-repeat="comment in comments" data-index="{{$index}}">
+                        <p class="user-img">
+                            <img src="img/head_icon.png" alt="个人头像"/>
+                        </p>
+                        <div style="overflow:hidden;">
+                          <p class="user-name">{{comment.commentator_id || '游客'}}</p>
+                          <p class="time">{{comment.time.slice(0,10)}}</p>
+                          <p class="user-comment">{{comment.content}}</p>
+                          <article class="comment-reply" ng-repeat="reply in comment.replys">
+                              <p class="reply-title">
+                                  <span style="color: #0480e9;">{{reply.commentator_id || '管理员'}}</span>回复：
+                                  <span>{{reply.time.slice(0,10)}}</span>
+                              </p>
+                              <p class="reply-content">{{reply.content}}</p>
+                          </article>
+                          <p class="count">
+                              <i class="like-count" ng-click="approve(comment.id, 'up', $event)">{{comment.like_count || 0}}</i>
+                              <i class="dislike-count" ng-click="approve(comment.id, 'down', $event)">{{comment.dislike_count || 0}}</i>
+                          </p>
+                        </div>
+                    </li>
+                </ul>
+                <div ng-show="canLoad1 && commentNotEmpty" id="pullUp1" class="">
+                    <span class="pullUpIcon"></span><span class="pullUpLabel" style="padding-left: 10px;">上拉加载更多...</span>
+                </div>
+                <div ng-show="!canLoad1 && commentNotEmpty" style="text-align: center;">
+                    <!--<span class="pullUpIcon"></span>-->
+                    <span class="noMore">没有更多精选评论了哦...</span>
+                </div>
+            </div>
+            <div class="empty-comment-wrap" ng-show="!commentNotEmpty">
+                <div class="empty-comment-icon"></div>
+                <p class="empty-comment-text">还没精选评论耶，赶紧抢沙发！</p>
+            </div>
+            <div class="network-column-wrap" ng-show="isBadNetwork">
+                <div class="network-column-icon"></div>
+                <p class="network-column-text">网络不给力,评价出不来啦~</p>
+            </div>
+        </article>
+        <article class="reply-comment" ng-show="!staObj.noRight">
+            <input ng-model="reply" id="replyContent" placeholder="写评论" ontouchend="this.focus()" type="text" maxlength="100"/><!--这玩意在哪儿显示-->
+            <a class="btn-send" href="javascript:void(0)" ontouchstart="" style="display:inline-block" ng-click="episodeComment($event)">发&nbsp;&nbsp;送</a>
+        </article>
+        <div class="reply-comment-btns" ng-show="staObj.noRight">
+            <a href="javascript:void(0)" class="register-btn" ontouchstart="" ng-click="regist()">快速开户</a>
+            <a href="javascript:void(0)" class="login-btn" ontouchstart="" ng-click="login()">登录</a>
+        </div>
+    </section>
+
+
+    <section class="episode-panel scroll-position overflow-scroll" id="episode-panel" ng-show="!!detail && !isBadNetworkDetail">
+        <div>
+            <article>
+                <span class="complaint" ng-show="staObj.noRight"><i class="report-no-icon"></i>举报</span>
+                <span class="complaint" ng-click="staObj.reportActivated=true" ng-show="!staObj.noRight"><i class="report-icon"></i>举报</span>
+                <h3 class="theme-title">摘要</h3>
+                <p>{{episode.abst}}</p>
+            </article>
+            <article>
+                <h3 class="theme-title">详细</h3>
+                <p id="episode-desc" ng-show="!staObj.noRight" ng-bind-html-unsafe="episode.desc"></p>
+                <p ng-show="staObj.noRight" class="no-right-desc">详细内容可登录交易账户查看，我要 
+                  <a href=javascript:void(0) ng-click="login()">登录</a> / <a href=javascript:void(0) ng-click="regist()">快速开户</a>
+                <p>
+            </article>
+            <article>
+               <h3 class="theme-title">风险提示</h3>
+               <p>投资有风险，资讯仅供参考。请您自行作出投资决策，如您据此投资，广发证券不做出任何不受损失或者最低收益的承诺。</p>
+            </article>
+            <article class="last">
+                <h3 class="theme-title">免责声明</h3>
+                <p>资讯内容仅供参考，其中信息或所表达观点不构成所涉证券买卖的出价或询价。广发证券不对因使用本资讯内容而引致的损失承担任何责任，除非法律法规有明确规定。客户不应以本资讯取代其独立判断或仅根据本资讯做出决策。广发证券可发出其它与本资讯所载信息不一致及有不同结论的观点 。本资讯反映投资顾问或研究人员的不同观点、见解及分析方法，并不代表广发证券或其附属机构的立场。本资讯所载资料、意见及推测仅反映投资顾问或研究人员于资讯发出时的判断，可随时更改且不予通告。未经广发证券事先书面许可，任何机构或个人不得以任何形式翻版、复制、刊登、转载和引用，否则由此造成的一切不良后果及法律责任由私自翻版、复制、刊登、转载和引用者承担。</p>
+            </article>
+        </div>
+     </section>
+
+
+    <section class="provider-info scroll-position overflow-scroll" id="p-info" ng-show="!!provider && !isBadNetworkDetail">
+        <article class="provider-resume">
+            <div class="avatar-url">
+                <img ng-src="{{providerInfo.thumb_url}}" alt=""/>
+            </div>
+            <div class="provider">
+              <p class="provider-name">{{providerInfo.name}}</p>
+              <p class="provider-title">{{providerInfo.title}}</p>
+            </div>
+        </article>
+        <article ng-click="collapseToggle()" id="pullDownDiv" class="provider-profile">
+            <p ng-class="{'profile_detail':isLongText}" style="white-space: pre-wrap;" id="profile_detail">{{providerInfo.profile}}</p>
+            <p ng-show="isCallapsiable"> <i ng-class="{'arrow-down':isLongText,'arrow-up':!isLongText}"></i></p>
+        </article>
+        <article class="provider-related" id="provider-related">
+            <div >
+                <ul>
+                    <li ng-repeat="episode in episodes" data-index="{$index}" ng-click="redirectAudio(providerInfo.id, episode.id)">
+                        <div class="episode-icon">
+                            <img ng-src="{{episode.category.thumb_url}}" alt="音频头像"/>
+                        </div>
+                        <div class="episode-info" style="overflow: hidden">
+                            <div style="">
+                                <p class="episode-title">{{episode.title}}</p>
+                                <p class="create-time">{{episode.publish_time.slice(0,10)}}</p><!--通过episodeId值取到对应的file_url-->
+                                <p class="abst">{{episode.abst}}</p>
+                            </div>
+                        </div>
+                        <div class="episode-count">
+                            <span class="comment-count"><em class="comment-count-img"></em>{{episode.comment_count}}</span>
+                            <span class="listen-count"><em class="listen-count-img"></em>{{episode.listen_count}}</span>
+                            <!-- <i class="comment-count" data-episodeId="{{episode.id}}">{{episode.comment_count || 0}}</i>
+                            <i class="listen-count" data-episodeId="{{episode.id}}">{{episode.listen_count || 0}}</i> -->
+                        </div>
+                    </li>
+                </ul>
+                <div class="empty-comment-wrap" ng-show="!providerNotEmpty">
+                    <div class="empty-comment-icon"></div>
+                    <p class="empty-comment-text">听听其他主讲人的精彩节目吧~</p>
+                </div>
+                <div class="network-column-wrap" ng-show="isBadNetwork">
+                    <div class="network-column-icon"></div>
+                    <p class="network-column-text">网络不给力,音频出不来啦~</p>
+                </div>
+                <div ng-show="canLoad2 && providerNotEmpty" id="pullUp2" ng-class="{true:'loading',false:''}[isLoading]">
+                    <span class="pullUpIcon"></span><span class="pullUpLabel" style="padding-left: 10px;">{{loadingText}}</span>
+                </div>
+                <div ng-show="!canLoad2 && providerNotEmpty" style="text-align: center;">
+                    <span class="noMore">没有更多音频了哦，敬请期待...</span>
+                </div>
+            </div>
+        </article>
+    </section>
+
+
+    <section class="report-ctn" ng-show="staObj.reportActivated"><!---->
+        <div class="report-list">  <!-- ng-click从本节点下移到li，防止全部上报的情况 -->
+            <ul>
+                <li ng-click="reportType($event)">捏造事实、传播政治性谣言</li>
+                <li ng-click="reportType($event)">恶意营销</li>
+                <li ng-click="reportType($event)">涉及色情、恐怖、暴力等内容</li>
+                <li ng-click="reportType($event)">版权类侵权(媒体不当引用、抄袭等)</li>
+                <li ng-click="reportType($event)">恶意诽谤、贬损他人</li>
+                <li ng-click="reportType($event)" style="border-bottom: none;" data-index="4"><a href="javascript:void(0)" style="color:#0061b3">其他意见和建议</a></li>
+            </ul>
+        </div>
+        <div class="report-list cancel-btn" ng-click="staObj.reportActivated=false">取消</div>
+        <div class="mask-layer"></div>
+    </section><!--举报条目-->

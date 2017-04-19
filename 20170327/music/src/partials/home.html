@@ -1,0 +1,10 @@
+<table class="swipe" id="swipeview">
+	<tr ng-repeat="item in itemsList">
+		<td ng-repeat="subItem in item" ng-click='openUrl(subItem.url,subItem.title)' class="cell" ng-class='{"new-hot" : subItem.isNew}'>
+			<div>
+				<img ng-src="img/homepage/retina/{{subItem.icon}}.png" class="nocallout">
+				<span class="name">{{subItem.title}}</span>
+			</div>
+		</td>
+	</tr>
+</table>

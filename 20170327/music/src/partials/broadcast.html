@@ -1,0 +1,51 @@
+<audio id="audio" controls="controls" preload="none">
+    <source src=""></source>
+    <div>不支持该文件格式的音频</div>
+</audio>
+<section class="broadcast-bg" ng-style="playBgStyle">
+    <span class="shareMusic" ng-click="shareMusicFun()"><i></i></span>
+    <div class="cover">
+        <div class="roller">
+            <div class="frame" ng-style="playFrameStyle"></div>
+        </div>
+    </div>
+    <div class="audio-broadcast-msg" ng-show="!badNetTip1"><i data-offside="false"></i></div><!--ng-bind="bMsg"-->
+    <div class="noNetTipBroadcast" ng-show="badNetTip1" ng-click="reloadBroadcast()"><i>网络不给力，请稍后重试</i></div>
+    <div class="interactive-icon">
+        <span class="thumb-up" ng-click="showThumb('up',$event)"><i></i><sup>{{episode.like_count || 0}}</sup></span>
+        <span class="thumb-down" ng-click="showThumb('down',$event)"><i></i><sup>{{episode.dislike_count || 0}}</sup></span>
+        <span class="comment-count" ng-click="showComment('comment')"><i></i><sup>{{episode.comment_count || 0}}</sup></span>
+        <span class="comment-detail" ng-click="showComment('detail')"><i></i></span>
+        <span class="share" ng-click="showComment('provider')"><i></i></span>
+    </div>
+    <div class="control-bar">
+        <div class="progress-control">
+            <div class="time-bar">
+                <div class="full-time-bar">
+                    <div class="cur-time-bar"></div>
+                </div>
+                <div class="slider-btn">
+                    <i class="slider-btn-icon"></i>
+                </div>
+            </div>
+            <div class="time-count left">
+                <span class="cur-time">00:00</span>
+            </div>
+            <div class="time-count right">
+                <span class="full-time">00:00</span>
+            </div>
+        </div>
+        <div class="btn-control">
+            <i class="pre" ng-class="{disable: curEpiIndex<=0}" ng-click="pre()"></i>
+            <i class="btn-switch btn-start" ng-click="switchAudio($event)"></i>
+            <i class="next" id="nextItem" ng-class="{disable: curEpiIndex>=epiArrLen-1}" ng-click="next()"></i>
+        </div>
+    </div>
+    <div class="no-right-mask" ng-show="staObj.noRight && staObj.showMask">
+        <div class="no-right-img">
+            <div class="no-right-closed" ng-click="staObj.showMask = false"></div>
+        </div>
+        <a href="javascript:void(0)" ontouchstart="" class="login-btn" ng-click="playLogin()">登录</a>
+        <a href="javascript:void(0)" ontouchstart="" class="register-btn" ng-click="playRegist()">快速开户</a>
+    </div>
+</section>

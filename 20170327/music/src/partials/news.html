@@ -1,0 +1,23 @@
+<div id="newsContainer" class="flex" style="height: 100%; -webkit-overflow-scrolling: touch;overflow-y: scroll;" ng-show='step == 0'>
+	<div class="listview" style="padding-top:45px">
+		<a href="javascript:;" ng-repeat="item in itemList" class="item" ng-click="select($index)">
+			<p class="title" ng-bind="item.title"></p>
+			<p class="content" ng-bind="item.abstract"></p>
+			<time ng-bind="item.datetime"></time>
+		</a>
+		<div class="loadingTips hidden">往上拖动加载更多...</div>
+	</div>
+</div>
+<div class="flex wrapper" id="detailwrapper" style="height: 100%; -webkit-overflow-scrolling: touch;overflow-y: scroll;" ng-show='step == 1'>
+	<article>
+		<header class="ah">
+			<h2 ng-bind="item.title"></h2>
+			<time pubdate ng-bind="item.date"></time>
+		</header>
+		<div class="line"></div>
+		<div class="body" ng-bind-html-unsafe="item.content"></div>
+	</article>
+</div>
+<div class="flex wrapper" ng-show='step == 2' style="height: 100%; -webkit-overflow-scrolling: touch;overflow-y: scroll;">
+	<iframe ng-src="{{dataUrl}}" frameborder="no" sandbox="allow-same-origin allow-forms allow-scripts allow-top-navigation" width="100%" height='100%'></iframe>
+</div>

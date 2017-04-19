@@ -1,0 +1,26 @@
+<div class="play-board" ng-include="'partials/broadcast.html'" ng-show="'PLAY'==boardName" gf-broadcast></div>
+<div class="comment-board" ng-include="'partials/audio_comment.html'" ng-show="'COMMENT'==boardName" gf-audio-comment></div>
+<div class="report-board" ng-include="'partials/report.html'" ng-show="'REPORT'==boardName" gf-report></div>
+<div class="popup-msg" ng-show="!!staObj.showTips || staObj.alertTips">
+   	<div class="mask-layer"></div>
+   	<div class="popup-content">
+      	<p class="popup-title">
+      		<i ng-class="{true :'img-tip', false :'icon'}[staObj.alertTips]"></i>
+      		<span style="margin-left:1rem;">{{tipTitle}}</span>
+      	</p>
+      	<p class="suggest" ng-bind-html-unsafe="tipText"></p>
+		<p class="btn-ok" ng-show="staObj.alertTips" ng-click="staObj.alertTips=!staObj.alertTips">好</p>
+      	<p class="btn-ok" ng-show="staObj.showTips" ng-click="staObj.showTips=!staObj.showTips">确定</p>
+   	</div>
+</div>
+<!-- <div class="download-guider" ng-show="staObj.showDownGuider">
+   <div class="gf-icon left"></div>
+   <div class="guider-text">
+      <strong>下载APP</strong>
+      <p>更多广发独家资讯抢先听<p>
+   </div>
+   <div class="guider-icon right">
+      <a href="https://store.gf.com.cn/mobile/other/app-5.1-promo?_gfsrc=androidshare_x_x_moible" ontouchstart="" class="download-icon">立即下载</a>
+      <i class='guider-closer' ng-click="staObj.showDownGuider=false"></i>
+   </div>
+</div> -->

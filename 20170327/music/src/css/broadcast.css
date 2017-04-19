@@ -1,0 +1,443 @@
+
+.broadcast-bg{
+    background:url('../img/playbg/01.png') repeat-y;
+    background-size: cover;
+    width:100%;
+    height:100%;
+    flex: 1;
+    box-flex: 1;
+    -webkit-box-flex: 1;
+}
+
+@-webkit-keyframes run{
+    from{
+        -webkit-transform:rotate(0deg);
+    }
+    to{
+        -webkit-transform:rotate(360deg);
+    }
+}
+.cover .frame-pause{
+    -webkit-animation-play-state:paused;
+}
+.cover .frame-start{
+    -webkit-animation:run 6s linear 0s infinite;
+}
+.broadcast-bg .cover {
+    width: 23.8rem;
+    height: 23.8rem;
+    margin: 0 auto;
+    padding-top: 7.5rem;
+}
+.broadcast-bg .roller {
+    background: url('../img/disk.png') no-repeat;
+    background-size: contain;
+    width: 23rem;
+    height: 23rem;
+    border: solid 0.4rem rgba(255, 255, 255, 0.5);
+    border-radius: 20rem;
+}
+.broadcast-bg .frame{
+    width:13rem;
+    height:13rem;
+    border-radius:10rem;
+    margin:5rem 5.1rem;
+    /*margin: 5rem auto;*/
+    background: url('../img/player/04.png') no-repeat;
+    background-size: cover;
+}
+.interactive-icon{
+    width:95%;
+    text-align:center;
+    margin: 0 auto;
+}
+.interactive-icon>span {
+    display: inline-block;
+    width: 18%;
+}
+.interactive-icon i{
+    display:inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.interactive-icon sup {
+    top: -1.5rem;
+    color: #fff;
+}
+.interactive-icon>.thumb-up i{
+     background-image: url('../img/up.png');
+}
+.interactive-icon>.thumb-up.thumb-active i{
+     background-image: url('../img/up_s.png');
+}
+.interactive-icon>.thumb-down i{
+    background-image: url('../img/down.png');
+}
+.interactive-icon>.thumb-down.thumb-active i{
+    background-image: url('../img/down_s.png');
+}
+.interactive-icon>.comment-count i{
+    background-image: url('../img/comment.png');
+}
+.interactive-icon>.comment-detail i{
+    background-image: url('../img/content.png');
+}
+.interactive-icon>.share i{
+    background-image: url('../img/shares.png');
+}
+.control-bar {
+    position: relative;
+    margin-top: 2rem;
+    /* border: 1px solid red;*/
+}
+.control-bar>.progress-control{
+    margin-top:1rem;
+    position:relative;
+    height:.2rem;
+}
+.control-bar .time-bar{
+    position:absolute;
+    left:15%;
+    right: 19.5%;
+    height:.2rem;
+    /*background-color: #454447;*/
+
+}
+.control-bar .full-time-bar{
+    position:absolute;
+    height:.2rem;
+    right: -0.7rem;
+    left: 0.7rem;
+    background-color: #454447;
+}
+.control-bar .cur-time-bar{
+    height:.2rem;
+    position:absolute;
+    top:0;
+    background: #d33a31;
+    z-index:19 ;
+}
+.control-bar .slider-btn{
+    width:4rem;
+    height:4rem;
+    position:absolute;
+    z-index:20;
+    top:-2rem;
+}
+.control-bar .slider-btn-icon{
+    display: inline-block;
+    width:1.6rem;
+    height:1.6rem;
+    background: url('../img/slide.jpg') no-repeat;
+    background-size:cover;
+    border-radius:2rem;
+    position: absolute;
+    top:1.2rem;
+}
+.control-bar .left{
+    color:#ffffff;
+    opacity: 0.72;
+    float:left;
+    margin-left:1rem;
+}
+.control-bar .right{
+    color:#ffffff;
+    margin-right:1rem;
+    float:right;
+}
+.control-bar .time-count{
+    font-size:1.4rem;
+    line-height:.5rem;
+}
+.control-bar .btn-control{
+    width:70%;
+    /*display:flex;
+    justify-content: space-around;
+    align-items: center; 不兼容iphone4，废弃*/
+    margin:3.2rem auto 0;
+    text-align: center;
+}
+
+.control-bar .btn-control>i{
+    display:inline-block;
+    width:2.4rem;
+    height:2.4rem;
+    /*width:3.2rem;
+    height:3.2rem;*/
+}
+.control-bar .btn-control .pre{
+    background: url('../img/prev.png') no-repeat;
+    background-size: cover;
+    margin-left: 3.2rem;
+    margin-top: 1.05rem;
+    float: left;
+}
+.control-bar .btn-control>i.btn-switch{
+    width: 4.5rem;
+    height: 4.5rem;
+    /*width:5.4rem;
+    height:5.4rem;*/
+}
+.control-bar .btn-control .btn-pause{
+    background: url('../img/pause.png') no-repeat;
+    background-size: cover;
+
+}
+.control-bar .btn-control .btn-start{
+    background: url('../img/start.png') no-repeat;
+    background-size: cover;
+}
+.control-bar .btn-control .next{
+   background: url('../img/next.png') no-repeat;
+    background-size: cover;
+    margin-right: 3.2rem;
+    margin-top: 1.05rem;
+    float: right;
+}
+.no-right-mask {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.no-right-closed{
+    top:0;
+    width:2.5rem;
+    height:2.5rem;
+    position:absolute;
+    z-index: 28;
+    background: url('../img/close.png') no-repeat;
+    background-size: cover;
+}
+.no-right-img {
+    height: 50%;
+    position: relative;
+    background: url('../img/no_right.png') no-repeat;
+    background-size: contain;
+}
+
+.no-right-mask>a { 
+    width: 26.5rem;
+    height: 4.3rem;
+    border-radius: .5rem;
+    font-size: 1.8rem;
+    line-height: 4.3rem;
+    text-align: center;
+    margin: 1.5rem auto;
+    border: 1px solid #0061b3;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.no-right-mask>.login-btn {
+    background: #0061b3;
+    color: white;
+}
+.no-right-mask>.login-btn:active {
+    background-color: #004a89;
+}
+.no-right-mask>.register-btn {
+    background: transparent;
+    color: #0061b3;
+}
+.no-right-mask>.register-btn:active {
+    background-color: #cfe6fa;
+}
+.audio-broadcast-msg{
+    text-align:center;
+    font-size: 1.4rem;
+    line-height:3.5rem;
+    height: 3.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.audio-broadcast-msg>i{
+    display:inline-block;
+    color:#e3e3e3;
+    padding:0 1.6rem;
+    background-color: #000;
+    opacity: 0.3;
+    border-radius: .5rem;
+}
+
+
+.shareMusic {
+    background: url('../img/share_2.png') no-repeat;
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    display: block;
+    background-size: contain;
+    width: 2.15rem;
+    height: 2.4rem;
+}
+
+.shareMusic:active {
+    background: url('../img/share_1.png') no-repeat;
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    display: block;
+    background-size: contain;
+    width: 2.15rem;
+    height: 2.4rem;
+}
+
+@media only screen and (min-device-width: 318px) and (max-device-width: 358px) and (-webkit-min-device-pixel-ratio: 2) {  
+    /*针对iPhone 4, 5c,5s, 所有iPhone6的放大模式，个别iPhone6的标准模式*/ 
+    .broadcast-bg .cover{
+        margin: 0 auto;
+        padding-top: 3rem;
+        width: 17.8rem;
+        height: 17.8rem;
+    }
+    .broadcast-bg .roller{
+        width: 17rem;
+        height: 17rem;
+    }
+    .broadcast-bg .frame{
+        margin: 3.7rem auto;
+        width: 9.6rem;
+        height: 9.6rem;
+    }
+    .audio-broadcast-msg{
+        margin-bottom: 1rem;
+    }
+    .control-bar {
+        position: relative;
+        margin-top: 2rem;
+        /* border: 1px solid red;*/
+    }
+
+    .control-bar .btn-control>i{
+        display:inline-block;
+        width:2rem;
+        height:2rem;
+    }
+    .control-bar .btn-control>i.btn-switch{
+        width: 3.75rem;
+        height: 3.75rem;
+    }
+
+    .control-bar .btn-control{
+        margin:2rem auto 0;
+    }
+    .no-right-img{
+        margin: 10% auto 10%;
+    }
+    .no-right-closed{
+        /*left:60%;*/
+        right: 15%;
+    }
+    .interactive-icon>i{
+        margin-left:2rem;
+        width:2rem;
+        height:2rem;
+    }
+    .reply-comment-btns {
+        text-align: center;
+    }
+    .reply-comment-btns .register-btn {
+        display: inline-block;
+        text-align: center;
+        width: 47%;
+    }
+    .reply-comment-btns .login-btn {
+        display: inline-block;
+        text-align: center;
+        width: 47%;
+    }
+}
+@media only screen and (device-width: 320px) and (min-device-height: 540px) and (-webkit-min-device-pixel-ratio: 2) {  
+    .broadcast-bg .cover{
+        margin:0 auto;
+        padding-top: 7.5rem;
+    }
+    .control-bar .btn-control{
+        margin:3.2rem auto 0;
+    }
+}
+
+@media only screen and (min-device-width: 358px) and (max-device-width: 412px) and (-webkit-min-device-pixel-ratio: 2) {  
+    /*针对大多数iPhone6的标准模式*/ 
+    .broadcast-bg .cover{
+        margin:0 auto;
+        padding-top: 7.5rem;
+    }
+    .audio-broadcast-msg{
+        margin-bottom: 3.45rem;
+    }
+    .control-bar .btn-control{
+        margin:3.2rem auto 0;
+    }
+    .no-right-img{
+        margin: 18% auto 15%;
+    }
+    .no-right-closed{
+        /*left:70%;*/
+        right: 15%;
+    }
+    .control-bar {
+        position: relative;
+        margin-top: 3.25rem;
+    } 
+}
+
+/*@media only screen and (device-width: 360px) and (device-height: 592px) and (-webkit-min-device-pixel-ratio: 2) {  */
+@media only screen and (device-width: 360px) and (-webkit-min-device-pixel-ratio: 2) {
+    /*针对andriod1080*1920屏幕，领导用机*/ 
+    .broadcast-bg .cover{
+        padding-top: 6rem;
+    }
+    .audio-broadcast-msg{
+        margin-bottom: 2rem;
+    }
+}  
+   
+@media only screen and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {  
+    /*针对所有iPhone6+的放大模式  */
+    
+}  
+@media only screen and (min-device-width:412px) and (-webkit-min-device-pixel-ratio: 3) {  
+    /*针对所有iPhone6+的标准模式,414px写为412px是由于三星Nexus 6为412px，可一并处理  */
+    .broadcast-bg .cover{
+        margin:0 auto;
+        padding-top: 8.5rem;
+        /*padding-top: 24%;*/
+    }
+    .audio-broadcast-msg{
+        margin-bottom: 5.5rem;
+    }
+    .control-bar .btn-control{
+        margin:3.2rem auto 0;
+    }
+    .no-right-img{
+        margin: 18% auto 15%;
+    }
+    .no-right-closed{
+        /*left:70%;*/
+        right: 15%;
+    }
+    /*.interactive-icon>i{
+        margin-left:2rem;
+        width:2.5rem;
+        height:2.5rem;
+    }*/
+    .control-bar {
+        position: relative;
+        margin-top: 3.25rem;
+        /* border: 1px solid red;*/
+    }
+    
+}  
+@media screen and (max-height: 480px) {
+    
+}
+@media screen and (min-height: 500px) {
+    
+}
+

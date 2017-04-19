@@ -1,0 +1,83 @@
+<!-- <section class="broadcast" ng-style="{'background-image': 'url({{episode_01.topbg_thumb}})'}"> -->
+<section class="noNetTip" ng-show="isBadNetwork1" style="display: none;">
+    <span><i class="noNetIcon"></i><a href="javascript:;" class="noNetTipText" onclick="window.location.reload();">哎哎呀，网络太不给力了~，我要重试</a></span>
+</section>
+<section class="broadcast" ng-style="topbgStyle">
+    <p class="corner">推荐</p>
+    <div class="audio-info" ng-show="ColumnNotEmpty">
+        <p class="title">{{episode_01.title}}</p>
+        <p class="profile overOne">
+            <span>{{episode_01.provider.name}}</span>
+            <span> {{episode_01.provider.title}}</span>
+            <span>{{episode_01.publish_time.slice(0,10)}}</span>
+        </p>
+        <p>
+            <a class="btn-listen" ontouchstart="" href="javascript:void(0)" ng-click="topRedirectAudio(episode_01.id)" role="button">立即收听</a>
+        </p>
+    </div>
+    <div class="audio-info" ng-show="!ColumnNotEmpty && !isBadNetwork1 && !isBadNetwork2">
+        <h5>精彩节目正在赶来</h5>
+        <h3>敬请期待哦~</h3>
+    </div>
+</section>
+<section class="audio-column">
+    <section id="episode-navs" class="navs">
+        <nav id="categoriesNav">
+           <a href="javascript:void(0)" ng-class="{active:$index==0}" data-index="{{$index}}" title="{{category.name}}" ng-repeat="category in categories" ng-click="categoryNav($event, category.id)">
+              <div> {{category.name}}</div>
+           </a>
+        </nav>
+    </section>
+    <section class="provider-comment overflow-scroll" id="episode-list-wrap">
+        <div id="episode-list-wrap-sub" ng-hide="isBadNetwork1 || isBadNetwork2">
+            <ul class="episode-list marBtm">
+                <li ng-repeat="episode in episodes" data-index="{{$index}}" ng-class="{last: episodes.length == $index+1}" ng-click="redirectAudio(episode.id)">
+                    <div class="provider-brief">
+                        <i class="provider-img" ng-click="showCommentList(episode.id, 'provider', $event)">
+                            <img ng-src="{{episode.provider.thumb_url}}" alt="" />
+                        </i>
+                        <div class="row2" style="height:3.4rem;overflow:hidden;">
+                            <p class="title">{{episode.title}}</p>
+                            <p class="provider">
+                                {{episode.provider.name}}&nbsp;&nbsp;&nbsp;{{episode.provider.title}}
+                            </p>
+                        </div>
+                    </div>
+                    <p class="episode-abst">{{episode.abst}}</p>
+                    <p class="row4">
+                        <span class="comment-count"><em class="comment-count-img"></em>{{episode.comment_count}}</span>
+                        <span class="listen-count"><em class="listen-count-img"></em>{{episode.listen_count}}</span>
+                        <em class="publish-time">{{episode.publish_time.slice(0,10)}}</em>
+                    </p>
+                </li>
+            </ul>
+            <div ng-show="canLoad && ColumnNotEmpty && !isBadNetwork1 && !isBadNetwork2" id="pullUp" class="">
+                <span class="pullUpIcon"></span><span class="pullUpLabel" style="padding-left: 10px;">上拉加载更多...</span>
+            </div>
+            <div ng-show="!canLoad && ColumnNotEmpty && !isBadNetwork1 && !isBadNetwork2" style="text-align: center;">
+                <!--<span class="pullUpIcon"></span>-->
+                <span class="noMore">没有了，听听其他栏目吧...</span>
+            </div>
+        </div>
+        <div class="empty-column-wrap" ng-show="!ColumnNotEmpty && !isBadNetwork1 && !isBadNetwork2">
+            <div class="empty-column-icon"></div>
+            <p class="empty-column-text">听听其他栏目的精彩节目吧~</p>
+        </div>
+        <div class="network-column-wrap" ng-show="isBadNetwork2">
+            <div class="network-column-icon"></div>
+            <p class="network-column-text">网络不给力,音频出不来啦~</p>
+            <a href="javascript:;" onclick="window.location.reload();" class="reloadBtn">点击重试</a>
+        </div>
+    </section>
+</section>
+<div class="popup-msg" ng-show="androidTips" style="display: none;">
+    <div class="mask-layer"></div>
+    <div class="popup-content android-tip-title">
+        <p class="suggest" id="android-tip">
+            <i class="android-tip-icon"></i>
+            系统升级到安卓4.3以上版本，<br />
+            播放更流畅哦～～
+        </p>
+        <p class="btn-ok" ng-click="androidTips=!androidTips">知道了</p>
+    </div>
+</div>

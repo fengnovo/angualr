@@ -1,0 +1,19 @@
+<section class="other-report">
+    <div class="submit-report">
+        <p><!--其他方式举报还得传其他必须的参数-->
+            <textarea ng-model="reportContent" ontouchend="this.focus()" placeholder="您的意见对我们非常重要，期待您的反馈!" maxlength="800" required></textarea>
+        </p>
+        <p>
+            <input ng-model="contact" type="text" ontouchend="this.focus()" ng-pattern="/[a-zA-Z]|\d+/" placeholder="请留下您的联系方式,以便我们处理跟进"/>
+        </p>
+        <a class="btn-submit" ontouchstart="" href="javascript:void(0)" ng-click="submitReport()">提交</a>
+    </div>
+    <div class="popup-msg" ng-show="staObj.isSubmitComplaint">
+       <div class="mask-layer"></div>
+       <div class="popup-content" style="">
+          <p class="popup-title"><i class="icon"></i><span style="margin-left:1rem;">提交成功</span></p>
+          <p class="suggest">非常感谢您的宝贵意见，我们将第一<br/>时间处理跟进</p>
+          <p class="btn-ok" ng-click="successHandle()">确定</p>
+       </div>
+    </div>
+</section><!--举报输入框-->
