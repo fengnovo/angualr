@@ -1,0 +1,12 @@
+.home{
+}
+pre {
+    overflow: auto;
+}
+
+
+
+/* ng2 innerHtml 后的样式 上面的无效，下面有效*/
+:host /deep/ pre {   
+  overflow: auto;
+}

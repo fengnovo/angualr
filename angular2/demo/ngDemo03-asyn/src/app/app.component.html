@@ -1,0 +1,11 @@
+<main class="main">
+  <div>
+    <span> {{ title }} </span>
+    <ul class="nav">
+      <li><a (click)="goBack()">返回</a></li>
+      <li><a (click)="goHello()">跳到Hello</a></li>
+      <li><a (click)="goWTF()">跳到WTF</a></li>
+    </ul> 
+  </div>
+  <router-outlet></router-outlet>
+</main>
