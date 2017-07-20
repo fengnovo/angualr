@@ -1,10 +1,31 @@
-.home{
+.home, ul{
+  margin: 0;
+  padding: 0;
 }
 pre {
     overflow: auto;
 }
 
+ul li {
+  list-style: none;
+  line-height: 1.6rem;
+  border-bottom: 1px solid #ccc;
+}
+ul li:last-child{
+  border-bottom: none;
+}
 
+.moreBtn {
+    width: 80%;
+    display: block;
+    margin: 1rem auto;
+    font-size: 1rem;
+    height: 3rem;
+    line-height: 2rem;
+    border-radius: 6px;
+    background-color: #1976D2;
+    color: #fff;
+}
 
 /* ng2 innerHtml 后的样式 上面的无效，下面有效*/
 :host /deep/ pre {   
