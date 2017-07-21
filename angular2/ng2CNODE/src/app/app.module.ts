@@ -1,21 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import {RouterModule} from "@angular/router";
-import {rootRouterConfig} from "./app.routes";
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http'
+import {RouterModule} from "@angular/router"
+import {rootRouterConfig} from "./app.routes"
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component'
 
-import { HomeComponent } from './containers/Home';
-import { DetailComponent } from './containers/Detail';
-import { UserComponent } from './containers/User';
-import { LoginComponent } from './containers/Login';
-import { PublishComponent } from './containers/Publish';
+import { HomeComponent } from './containers/Home'
+import { DetailComponent } from './containers/Detail'
+import { UserComponent } from './containers/User'
+import { LoginComponent } from './containers/Login'
+import { PublishComponent } from './containers/Publish'
 
-import { LoadingComponent } from './components/Loading';
-import { RecentTopicsComponent } from './containers/RecentTopics';
-import { RepliesComponent } from './containers/Replies';
+import { LoadingComponent } from './components/Loading'
+import { EditorComponent } from './components/Editor'
+
+import { RecentTopicsComponent } from './containers/RecentTopics'
+import { RepliesComponent } from './containers/Replies'
+
 
 
 import {FetchDataService} from './services/fetch-data.service';
@@ -31,7 +34,8 @@ import {FetchDataService} from './services/fetch-data.service';
     PublishComponent,
     LoadingComponent,
     RecentTopicsComponent,
-    RepliesComponent
+    RepliesComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
