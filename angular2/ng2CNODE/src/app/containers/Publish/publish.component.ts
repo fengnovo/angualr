@@ -30,4 +30,8 @@ export class PublishComponent {
   handleBack() {
       window.history.back()
   }
+  
+  PostData(event):void {
+    console.log(event) 
+  }
 }

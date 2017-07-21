@@ -1,10 +1,6 @@
-import {Component, ElementRef, Renderer } from '@angular/core'
-// import { E } from '../../../../node_modules/wangeditor/release/wangEditor.js'
-// import * as wangEditor  from 'wangeditor'
+import {Component, ElementRef, Renderer, Output, EventEmitter } from '@angular/core'
 import * as wangEditor from '../../../../node_modules/wangeditor/release/wangEditor.js'
 
-// console.log(window)
-console.log(wangEditor)
 
 @Component({
   selector: 'editor',
@@ -13,33 +9,23 @@ console.log(wangEditor)
 })
 export class EditorComponent {
 
-  private editorContent:string = ''
   private editor:any
+  @Output() onPostData = new EventEmitter()
 
-  constructor(el: ElementRef,renderer: Renderer) {
-    // let editor = new E('editorElem')
-    // console.log(editor)
-    // editor.config.uploadImgShowBase64 = true
-    // editor.create()
-    console.log( el.nativeElement.innerHTHML)
-    
-    console.log( el.nativeElement)
+  constructor(private el: ElementRef,private renderer: Renderer) { }
 
-
-    var editor = new wangEditor(el.nativeElement)
-    // console.log(editor)
-    // editor.config.uploadImgShowBase64 = true
-    editor.create()
+  ngAfterViewInit() {           // 模板中的元素已创建完成
+    let editordom = this.el.nativeElement.querySelector('#editorElem')
+    // console.dir(editordom)
+    this.editor = new wangEditor(editordom)
+    this.editor.customConfig.uploadImgShowBase64 = true
+    this.editor.create()
   }
 
-  // ngOnInit() {
-  //   console.log('ss' )
-  //   console.log( this.el.nativeElement.querySelector('editor'))
-  // }
-
-  clickHandle() {
-      // this.props.publishTopic(this.editor.txt.text())
-    // console.log(this.editor.txt.text())
+  clickHandle(dom:any):void {
+    let data = this.editor.txt.html()
+    console.log(data)
+    this.onPostData.emit(data)
   }
 
 
