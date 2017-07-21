@@ -1,0 +1,10 @@
+<ul id="replie-img">
+  <li *ngFor="let item of replies">
+      <a [routerLink]="['/detail/'+item.id]">
+          <div class="list-item">
+              <p>{{ item.title }}</p>
+              <h5>{{ transTimeFunc(item.last_reply_at) }}</h5>
+          </div>
+      </a>
+  </li>
+</ul>

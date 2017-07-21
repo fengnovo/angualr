@@ -1,0 +1,10 @@
+<div id="login">
+    <nav class="nav">
+        <img class="btn-back"  src="../../../assets/back.png" (click)="handleBack()"/>
+        <div class="nav-text">{{ title }}</div>
+    </nav>
+    <form class="login-from">
+        <input #token type="text" class="login-text" placeholder="请输入Access Token"/>
+        <button class="login-btn"  (click)="fetchData(token.value)">登录</button>
+    </form>
+</div>

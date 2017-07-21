@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ng2Cli</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+  .wrap{
+      width: 52px;
+      height: 52px;
+      animation: animation-wrap 2.5s linear infinite;
+  }
+  /*外层布局*/
+  .circle-layout{
+      width: 52px;
+      height: 52px;
+      animation: animation-circle 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  /*左div*/
+  .layout-left{
+      float: left;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+  }
+  /*右div*/
+  .layout-right{
+      float: right;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+  }
+
+  /*左圈动画*/
+  @keyframes animation-circle-left{
+      0%{
+          transform: rotate(40deg);
+      }
+      50%{
+          transform: rotate(-100deg);
+      }
+      100%{
+          transform: rotate(40deg);
+      }
+  }
+  /*右圈动画*/
+  @keyframes animation-circle-right{
+      0%{
+          transform: rotate(-310deg);
+      }
+      50%{
+          transform: rotate(-170deg);
+      }
+      100%{
+          transform: rotate(-310deg);
+      }
+  }
+  /*外层动画*/
+  @keyframes animation-circle{
+      0%{
+          transform: rotate(0deg);
+      }
+      25%{
+          transform: rotate(180deg);
+      }
+      50%{
+          transform: rotate(360deg);
+      }
+      75%{
+          transform: rotate(540deg);
+      }
+      100%{
+          transform: rotate(720deg);
+      }
+  }
+  /*最外层动画*/
+  @keyframes animation-wrap{
+      0%{
+          transform: rotate(0deg);
+      }
+      100%{
+          transform: rotate(360deg);
+      }
+  }
+
+  
+.init-loading .loading {  
+  position:absolute;
+  left:45%;
+  top:30%;
+}  
+  </style>
+</head>
+<body>
+  <app-root>
+    <div class="init-loading">
+      <div class="loading">
+        <div class="wrap" style="width: 52px; height: 52px;">
+            <div class="circle-layout" style="width: 52px; height: 52px;">
+                <div class="layout-left">
+                    <div class="circle-left" style="position: absolute; top: 0px; left: 0px; width: 44px; height: 44px; border-width: 4px; border-style: solid; border-color: rgb(101, 187, 206) rgb(101, 187, 206) transparent transparent; border-radius: 50%; transform: rotate(40deg); animation: animation-circle-left 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;"></div>
+                </div>
+                <div class="layout-right">
+                    <div class="circle-right" style="position: absolute; top: 0px; right: 0px; width: 44px; height: 44px; border-width: 4px; border-style: solid; border-color: rgb(101, 187, 206) transparent transparent rgb(101, 187, 206); border-radius: 50%; transform: rotate(-310deg); animation: animation-circle-right 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;"></div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </app-root>
+</body>
+</html>

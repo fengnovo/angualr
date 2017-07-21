@@ -1,0 +1,25 @@
+
+ <!-- <loading [r]="52" [z]="4" [c]="#65bbce"></loading>  -->
+  <div>
+      <nav class="nav">
+          <img class="btn-back"  src="../../../assets/back.png" (click)="handleBack()"/>
+          <div class="nav-text">{{ title }}</div>
+      </nav>
+      <div *ngIf="content == ''" class="content-center">
+            <loading [loadingOpt] = "loadingOpt"></loading> 
+      </div>  
+      <div *ngIf="content != ''" id="detail">
+          <li>
+              <a [routerLink]="['/user/'+author.loginname]">
+                  <img [src]="author.avatar_url"/>
+              </a>
+              <div class="list-item">
+                  <p>{{ title }}</p>
+                  <h5>作者：{{ author.loginname }} 时间：{{ transTimeFunc(create_at) }}</h5>
+                  <h5>回复数：{{ reply_count }} 浏览量：{{ visit_count }}</h5>
+              </div>
+          </li>
+          <div [innerHtml]="content"></div>
+          <replies [replies]="replies"></replies>
+      </div>
+  </div>

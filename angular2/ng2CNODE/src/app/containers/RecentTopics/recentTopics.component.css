@@ -1,0 +1,11 @@
+#replie-img .left-avatar{
+    float: left;
+    width: 3.5rem;
+}
+
+#replie-img .loginname-avatar{
+    font-size: .8rem;
+}
+#replie-img li:last-child {
+    border-bottom: none;
+}

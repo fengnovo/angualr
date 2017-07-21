@@ -1,0 +1,18 @@
+<div>
+    <img class="comment-icon" src="../../../assets/commen.png" />
+    <span class="comment-text">以下是精彩评论</span>
+    <ul id="replie-img">
+        <li *ngFor="let item of replies">
+            <div class="left-avatar">
+                <a [routerLink]="['/user/'+item.author.loginname]">
+                    <img [src]="item.author.avatar_url"/>
+                </a>
+                <span class="loginname-avatar">{{ item.author.loginname }}</span>
+            </div>
+            <div class="list-item">
+                <p [innerHtml]="item.content"></p>
+                <h5>{{ transTimeFunc(item.create_at) }}</h5>
+            </div>
+        </li>
+    </ul>
+</div>
