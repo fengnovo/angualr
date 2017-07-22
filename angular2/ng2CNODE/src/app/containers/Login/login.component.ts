@@ -16,19 +16,17 @@ export class LoginComponent {
 
   constructor(private _router:Router, private fetchDataService:FetchDataService){
     let data:any = localStorage.getItem('fengnovo.cnode.user')
-    console.log(data)
 		if(data){
       data = JSON.parse(data)
     }
   }
 
-  handleBack() {
+  handleBack():void {
      window.history.back()
   }
 
   fetchData(val:string) {
     let accesstoken:string = val.replace(/^(\s|\u00A0)+/,'').replace(/(\s|\u00A0)+$/,'')
-    console.log(accesstoken)
     if(accesstoken === ''){
         toastIt('请输入accesstoken！', 2000, {fontSize: '18px'})
         return

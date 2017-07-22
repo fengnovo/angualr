@@ -22,10 +22,11 @@ export class EditorComponent {
     this.editor.create()
   }
 
-  clickHandle(dom:any):void {
-    let data = this.editor.txt.html()
-    console.log(data)
-    this.onPostData.emit(data)
+  clickHandle():any {
+    let data = this.editor.txt.text()
+    // console.log(data)
+    return data
+    // this.onPostData.emit(data)
   }
 
 

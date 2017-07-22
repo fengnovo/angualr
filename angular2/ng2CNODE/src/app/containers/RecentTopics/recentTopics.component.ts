@@ -13,7 +13,7 @@ export class RecentTopicsComponent {
 
   constructor() {}
 
-  transTimeFunc(str) {
+  transTimeFunc(str):any {
     return transTimeFunc(str)
   }
 

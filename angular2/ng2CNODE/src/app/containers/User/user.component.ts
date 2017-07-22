@@ -12,7 +12,7 @@ import {transTimeFunc} from '../../util/time'
 })
 export class UserComponent implements OnInit {
 
-  private loadingOpt:any = {r:52, z:4, c:'#65bbce'};
+  private loadingOpt:any = {r:52, z:4, c:'#65bbce'}
   private id:string = ''
   private user:any = {}
   private loginname:string = ''
@@ -30,15 +30,15 @@ export class UserComponent implements OnInit {
     this.user = user
   }
 
-  handleBack() {
+  handleBack():void {
     window.history.back()
   }
   
-  transTimeFunc(str) {
+  transTimeFunc(str):any {
     return transTimeFunc(str)
   }
 
-  handlePublish() {
+  handlePublish():void {
     if(this.user.loginname){
         this._router.navigate(['/publish'])
     }else{
@@ -46,7 +46,7 @@ export class UserComponent implements OnInit {
     }
   }
 
-  handleExit() {
+  handleExit():void {
     localStorage.removeItem('fengnovo.cnode.user')
     this.user = {}
   }
@@ -65,9 +65,6 @@ export class UserComponent implements OnInit {
             this.recent_topics = d.recent_topics
             this.recent_replies = d.recent_replies
         })
-		// .catch(e => {
-    //         console.log(e)
-    //     })
   }
   
 

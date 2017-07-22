@@ -44,7 +44,7 @@ export class DetailComponent implements OnInit {
   transTimeFunc(ts: any): any {
     return transTimeFunc(ts)
   }
-  handleBack() {
+  handleBack():void {
     window.history.back()
   }
 

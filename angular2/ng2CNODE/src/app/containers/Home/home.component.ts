@@ -23,28 +23,49 @@ export class HomeComponent implements OnInit{
   constructor(private fetchDataService:FetchDataService, private zone:NgZone) {
     let cnode = JSON.parse(localStorage.getItem('fengnovo.cnode')) || {}
 		let user = JSON.parse(localStorage.getItem('fengnovo.cnode.user')) || {}
-		let {
-			list=[],
-			tab='all',
-			scrollTop=0,
-			activeClass='all',
-			page=1
-		} = cnode
+    if(cnode.tab){
+      this.tab = cnode.tab
+      this.activeClass = cnode.activeClass
+      this.list = cnode.list
+      this.scrollTop = cnode.scrollTop
+      this.page = cnode.page
+    }
 		this.user = user
   }
 
   ngOnInit(){
-    this.fetchDataService.get(`/api/v1/topics?page=1&tab=${this.tab}&limit=10`)
-      .subscribe(data => {
-        let page = this.page+1
-        this.page = page
-        this.list = data.data
-        
-        this.zone.run(() => {
-            this.loaded = true
-            this.scollHandle()
-        });
-      })
+    if(this.list.length == 0){
+			this.fetchDataService.get(`/api/v1/topics?page=1&tab=${this.tab}&limit=10`)
+        .subscribe(data => {
+          let page = this.page+1
+          this.page = page
+          this.list = data.data
+          
+          this.zone.run(() => {
+              this.loaded = true
+              this.scollHandle()
+          });
+        })
+		}
+  }
+
+  ngAfterViewInit() {  
+    if(this.list.length != 0){
+			window.scrollTo(0, this.scrollTop)
+			this.loaded = true
+			this.scollHandle()
+		}
+  }
+
+  ngOnDestroy() {
+    if(window.onscroll) window.onscroll = null
+		localStorage.setItem('fengnovo.cnode',JSON.stringify({
+			scrollTop: this.scrollTop,
+			list: this.list,
+			tab: this.tab,
+			page: this.page,
+			activeClass: this.activeClass
+		}))
   }
 
   handleTab(tabId: string):void {
@@ -53,6 +74,7 @@ export class HomeComponent implements OnInit{
     this.list = []
     this.scrollTop = 0
     this.page = 1
+    this.loaded = false
     this.fetchDataService.get(`/api/v1/topics?page=1&tab=${this.tab}&limit=10`)
       .subscribe(data => {
         let page = this.page+1

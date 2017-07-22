@@ -37,13 +37,5 @@ export const rootRouterConfig: Routes = [
     path: 'publish',
     component: PublishComponent
   }
-  // {
-  //   path: 'hello',
-  //   component: HelloComponent
-  // },
-  // {
-  //   path: 'wtf',
-  //   component: WTFComponent
-  // },
 ];
 

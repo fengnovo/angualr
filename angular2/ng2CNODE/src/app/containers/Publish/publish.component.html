@@ -7,7 +7,7 @@
     <div *ngIf="user.loginname" id="editor">
         <input #title type="text" class="login-text" placeholder="请输入标题"/>
          <editor (onPostData)="PostData($event)"></editor> 
-        <div class="login-btn" (click)="clickHandle(title.value)">发布新话题</div>
+        <div class="login-btn" (click)="publishTopic(title.value)">发布新话题</div>
     </div> 
     <div *ngIf="!user.loginname" class="publish-from">
         <img src="../../../assets/unlogin.png" />

@@ -10,8 +10,8 @@ export class FetchDataService {
   private options:any
 
   constructor(private http:Http) { 
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    this.options = new RequestOptions({ headers: headers });
+    let headers = new Headers({ 'Content-Type': 'application/json' })
+    this.options = new RequestOptions({ headers: headers })
   }
 
   get(url:string) {

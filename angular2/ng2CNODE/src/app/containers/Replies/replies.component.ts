@@ -12,7 +12,7 @@ export class RepliesComponent {
 
   constructor() {}
 
-  transTimeFunc(str) {
+  transTimeFunc(str):any {
     return transTimeFunc(str)
   }
 }
