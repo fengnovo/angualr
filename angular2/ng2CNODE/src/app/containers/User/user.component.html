@@ -1,9 +1,9 @@
 <div>
     <nav class="nav">
-        <img class="btn-back" src="../../../assets/back.png" (click)="handleBack()"/>
+        <img class="btn-back" src="../assets/back.png" (click)="handleBack()"/>
         <div class="nav-text">{{ loginname }}</div>
-        <img *ngIf="user.loginname == loginname" class="nav-img" src="../../../assets/exit.png" (click)="handleExit()"/>
-        <img *ngIf="user.loginname != loginname" class="nav-img" src="../../../assets/write.png" (click)="handlePublish()"/>
+        <img *ngIf="user.loginname == loginname" class="nav-img" src="../assets/exit.png" (click)="handleExit()"/>
+        <img *ngIf="user.loginname != loginname" class="nav-img" src="../assets/write.png" (click)="handlePublish()"/>
     </nav>
     <div *ngIf="create_at" id="user">
         <li>

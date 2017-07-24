@@ -2,17 +2,16 @@
 <nav class="nav">
   <img class="homepage-left-img" src="https://o4j806krb.qnssl.com/public/images/cnodejs_light.svg"/>
   <a  *ngIf="user.loginname" [routerLink]="['/user/'+user.loginname]" >
-    <img class="homepage-right-img" src="../../../assets/account.png"/>
+    <img class="homepage-right-img" src="../assets/account.png"/>
   </a>
   <a  *ngIf="!user.loginname" [routerLink]="['/login']" >
-    <img class="homepage-right-img" src="../../../assets/account.png"/>
+    <img class="homepage-right-img" src="../assets/account.png"/>
   </a>
 </nav>
 <ul id="list">
     <li *ngFor="let item of list">
       <a [routerLink]="['/user/'+item.author.loginname]">
            <img [src]="item.author.avatar_url"/>    
-         <!-- <img src="../../../assets/account.png"/>    -->
       </a>
       <a [routerLink]="['/detail/'+item.id]">
         <div class="list-item">

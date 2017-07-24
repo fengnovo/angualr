@@ -1,8 +1,8 @@
 <div id="publish">
     <nav class="nav">
-        <img class="btn-back"  src="../../../assets/back.png" (click)="handleBack()"/>
+        <img class="btn-back"  src="../assets/back.png" (click)="handleBack()"/>
         <div class="nav-text">{{ user.loginname }}</div>
-        <img class="nav-img"  src="../../../assets/exit.png" (click)="handleExit()"/>
+        <img class="nav-img"  src="../assets/exit.png" (click)="handleExit()"/>
     </nav>
     <div *ngIf="user.loginname" id="editor">
         <input #title type="text" class="login-text" placeholder="请输入标题"/>
@@ -10,7 +10,7 @@
         <div class="login-btn" (click)="publishTopic(title.value)">发布新话题</div>
     </div> 
     <div *ngIf="!user.loginname" class="publish-from">
-        <img src="../../../assets/unlogin.png" />
+        <img src="../assets/unlogin.png" />
         <div class="unlogin">请登录</div>
     </div>
 </div>
